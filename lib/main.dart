@@ -10,7 +10,7 @@ void main() {
 class XKCDPasswordGeneratorApp extends StatelessWidget {
   const XKCDPasswordGeneratorApp({super.key});
 
-  // This widget is the root of your application.
+  // App entry point
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(

@@ -15,7 +15,6 @@ class PasswordGenState extends ChangeNotifier {
     notifyListeners();
   }
 
-  
   void getLast() {
     print('In getLast');
     if (history.isNotEmpty) {

@@ -15,7 +15,7 @@ class AppHeader extends StatelessWidget {
     var appSubtitleStyle = theme.textTheme.displaySmall!.copyWith(
         color: theme.colorScheme.primary,
         fontWeight: FontWeight.bold,
-        fontSize: 12); // Minimum font size
+        fontSize: 12);
 
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
@@ -68,10 +68,6 @@ class AboutDropdown extends StatelessWidget {
       data: theme,
       child: Container(
         decoration: BoxDecoration(
-          // border: Border.all(
-          //   color: theme.colorScheme.primary,
-          //   width: 1,
-          // ),
           borderRadius: BorderRadius.circular(30),
           color: theme.colorScheme.secondary.withOpacity(0.2),
         ),

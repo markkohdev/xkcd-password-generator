@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart'; // Import the services package for clipboard functionality
-import 'package:english_words/english_words.dart'; // Assuming you're using the english_words package
+import 'package:flutter/services.dart';
+import 'package:english_words/english_words.dart';
 
 class CandidatePasswordCard extends StatelessWidget {
   CandidatePasswordCard({

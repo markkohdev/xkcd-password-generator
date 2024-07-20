@@ -7,11 +7,13 @@ class AppFooter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
+
     return Column(
       children: [
         Text(
           '© 2024 Mark Koh | Made with ❤️ in Golden, CO',
-          style: Theme.of(context).textTheme.bodySmall,
+          style: theme.textTheme.bodySmall,
         ),
       ],
     );

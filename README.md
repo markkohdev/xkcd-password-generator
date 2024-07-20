@@ -1,16 +1,8 @@
 # xkcd_password_generator
 
-A new Flutter project.
+An app for generating passwords based on the [xkcd comic "Password Strength"](https://xkcd.com/936/)
+![xkcd comic](assets/images/comic.png)
 
-## Getting Started
+**TL;DR:** The comic suggests that a password made up of four random words is more secure than a password made up of a random string of characters.  This app allows you to randomly generate passwords based on that strategy along with a bit of extra flexibility.  
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+The app is built in Flutter and Dart and is intended to work on iOS, Android, Mac, Windows, and Web.  It is currently in development and is not yet ready for release.
