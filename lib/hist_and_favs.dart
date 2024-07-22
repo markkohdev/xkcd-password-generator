@@ -27,27 +27,18 @@ class FavoritesList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var theme = Theme.of(context);
     var appState = context.watch<PasswordGenState>();
-
-    var headerStyle = theme.textTheme.displaySmall!.copyWith(
-        color: Theme.of(context).colorScheme.tertiary,
-        fontWeight: FontWeight.bold);
 
     List<PasswordSequence> favorites = appState.favorites;
 
-    return Card(
-      color: theme.cardColor,
-      child: Column(children: [
-        FittedBox(
-          child: Text(
-            'Favorites',
-            style: headerStyle,
-          ),
-        ),
-        ...favorites.reversed.map((wordPair) => Text(wordPair.asLowerCase)),
-      ]),
-    );
+    return Column(children: [
+      ListTitleCard(title: "Favorites"),
+      ...favorites.reversed.map((passwordSequece) {
+        return PasswordListCard(
+          passwordSequence: passwordSequece,
+        );
+      }),
+    ]);
   }
 }
 
@@ -58,26 +49,68 @@ class HistoryList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var headerStyle = Theme.of(context).textTheme.displaySmall!.copyWith(
-        color: Theme.of(context).colorScheme.tertiary,
-        fontWeight: FontWeight.bold);
-
     var appState = context.watch<PasswordGenState>();
-    var theme = Theme.of(context);
 
     List<PasswordSequence> history = appState.history;
 
+    return Column(children: [
+      ListTitleCard(title: "History"),
+      ...history.reversed.map((passwordSequece) {
+        return PasswordListCard(
+          passwordSequence: passwordSequece,
+        );
+      }),
+    ]);
+  }
+}
+
+class PasswordListCard extends StatelessWidget {
+  const PasswordListCard({
+    super.key,
+    required this.passwordSequence,
+  });
+
+  final PasswordSequence passwordSequence;
+
+  @override
+  Widget build(BuildContext context) {
     return Card(
-      color: theme.cardColor,
-      child: Column(children: [
-        FittedBox(
+        elevation: 2,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: FittedBox(
+              fit: BoxFit.scaleDown,
+              child: SelectableText(passwordSequence.asLowerCase)),
+        ));
+  }
+}
+
+class ListTitleCard extends StatelessWidget {
+  const ListTitleCard({
+    super.key,
+    required this.title,
+  });
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    var theme = Theme.of(context);
+    var headerStyle = theme.textTheme.displaySmall!.copyWith(
+        color: Theme.of(context).colorScheme.onTertiary,
+        fontWeight: FontWeight.bold);
+
+    return FittedBox(
+      child: Card(
+        color: theme.colorScheme.tertiary,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
           child: Text(
-            'History',
+            title,
             style: headerStyle,
           ),
         ),
-        ...history.reversed.map((wordPair) => Text(wordPair.asLowerCase)),
-      ]),
+      ),
     );
   }
 }

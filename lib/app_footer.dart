@@ -13,7 +13,7 @@ class AppFooter extends StatelessWidget {
 
     return Column(
       children: [
-        Text(
+        SelectableText(
           '© 2024 Mark Koh | Made with ❤️ in Golden, CO',
           style: footerTextTheme,
         ),

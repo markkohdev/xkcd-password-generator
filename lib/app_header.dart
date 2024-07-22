@@ -26,7 +26,7 @@ class AppHeader extends StatelessWidget {
           // Title box
           FittedBox(
             fit: BoxFit.fitWidth,
-            child: Text(
+            child: SelectableText(
               'XKCD Password Generator',
               style: appTitleStyle,
             ),
@@ -36,11 +36,12 @@ class AppHeader extends StatelessWidget {
             constraints: BoxConstraints(
               maxWidth: subtitleMaxWidth, // Use the calculated max width
             ),
-            child: Text(
+            child: SelectableText(
               'Passwords that are easy to remember, but hard to guess!',
               textAlign: TextAlign.center,
               style: appSubtitleStyle,
-              softWrap: true, // Enable text wrapping
+              
+              // softWrap: true, // Enable text wrapping
               maxLines: 2, // Optional: limit the number of lines
             ),
           ),
@@ -78,7 +79,7 @@ class AboutDropdown extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  Text(
+                  SelectableText(
                     "This password generator is inspired by the XKCD comic strip #936.\n\n"
                     "The core idea of it is that a password made up of four random words is easier to remember "
                     "and harder to guess than a shorter password with a mix of letters, numbers, and symbols. ",
