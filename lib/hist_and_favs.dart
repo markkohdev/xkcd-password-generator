@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:xkcd_password_generator/password_sequence.dart';
 import 'package:xkcd_password_generator/state_managers.dart';
@@ -72,16 +73,30 @@ class PasswordListCard extends StatelessWidget {
 
   final PasswordSequence passwordSequence;
 
+
   @override
   Widget build(BuildContext context) {
-    return Card(
-        elevation: 2,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: FittedBox(
-              fit: BoxFit.scaleDown,
-              child: SelectableText(passwordSequence.asLowerCase)),
-        ));
+    final String passwordText = passwordSequence.asLowerCase;
+
+    return GestureDetector(
+      onTap: () {
+        Clipboard.setData(ClipboardData(text: passwordText)).then((_) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Password copied to clipboard!'),
+            ),
+          );
+        });
+      },
+      child: Card(
+          elevation: 2,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: SelectableText(passwordText)),
+          )),
+    );
   }
 }
 
