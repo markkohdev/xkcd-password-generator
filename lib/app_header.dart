@@ -9,12 +9,12 @@ class AppHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
-    var appTitleStyle = theme.textTheme.displayLarge!.copyWith(
-        color: theme.colorScheme.primary, fontWeight: FontWeight.bold);
+    var appTitleStyle = theme.textTheme.displayLarge!
+        .copyWith(color: theme.colorScheme.primary, fontFamily: 'XKCDScript');
     // Ensure the subtitle has a minimum font size
     var appSubtitleStyle = theme.textTheme.displaySmall!.copyWith(
         color: theme.colorScheme.primary,
-        fontWeight: FontWeight.bold,
+        fontFamily: 'XKCDScript',
         fontSize: 12);
 
     return LayoutBuilder(
@@ -81,8 +81,8 @@ class AboutDropdown extends StatelessWidget {
                   Text(
                     "This password generator is inspired by the XKCD comic strip #936.\n\n"
                     "The core idea of it is that a password made up of four random words is easier to remember "
-                    "and harder to guess than a shorter password with a mix of letters, numbers, and symbols. "
-                    "Find out more about XKCD #936 here.",
+                    "and harder to guess than a shorter password with a mix of letters, numbers, and symbols. ",
+                    textAlign: TextAlign.center,
                     style: aboutStyle,
                   ),
                   SizedBox(height: 10),

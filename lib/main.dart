@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:xkcd_password_generator/logging.dart';
 import 'package:xkcd_password_generator/main_screen.dart';
 import 'package:xkcd_password_generator/state_managers.dart';
 
@@ -13,6 +14,8 @@ class XKCDPasswordGeneratorApp extends StatelessWidget {
   // App entry point
   @override
   Widget build(BuildContext context) {
+    loggerNoStack.i("Launching XKCD Password Generator App");
+
     return ChangeNotifierProvider(
       create: (context) => PasswordGenState(),
       child: MaterialApp(
