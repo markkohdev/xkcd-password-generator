@@ -34,13 +34,13 @@ class CandidatePasswordCard extends StatelessWidget {
               child: FittedBox(
                 fit: BoxFit.scaleDown, // Ensure the text scales down to fit
                 child: Column(children: [
-                  Text(
+                  SelectableText(
                     candidatePassword.asLowerCase,
                     style: textStyle,
                     semanticsLabel: candidatePassword.asSemanticLabel,
                   ),
                   SizedBox(height: 15),
-                  Text(
+                  SelectableText(
                     '"${candidatePassword.asSemanticLabel}"',
                     style: breakdownStyle,
                   ),
