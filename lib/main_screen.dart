@@ -1,4 +1,3 @@
-import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:xkcd_password_generator/action_button_row.dart';
@@ -6,13 +5,14 @@ import 'package:xkcd_password_generator/app_footer.dart';
 import 'package:xkcd_password_generator/app_header.dart';
 import 'package:xkcd_password_generator/candidate_password_card.dart';
 import 'package:xkcd_password_generator/hist_and_favs.dart';
+import 'package:xkcd_password_generator/password_sequence.dart';
 import 'package:xkcd_password_generator/state_managers.dart';
 
 class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var appState = context.watch<PasswordGenState>();
-    WordPair candidatePassword = appState.current;
+    PasswordSequence candidatePassword = appState.current;
 
     return Scaffold(
       body: SafeArea(

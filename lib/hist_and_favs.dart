@@ -1,6 +1,6 @@
-import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:xkcd_password_generator/password_sequence.dart';
 import 'package:xkcd_password_generator/state_managers.dart';
 
 class HistAndFavs extends StatelessWidget {
@@ -34,7 +34,7 @@ class FavoritesList extends StatelessWidget {
         color: Theme.of(context).colorScheme.tertiary,
         fontWeight: FontWeight.bold);
 
-    List<WordPair> favorites = appState.favorites;
+    List<PasswordSequence> favorites = appState.favorites;
 
     return Card(
       color: theme.cardColor,
@@ -65,7 +65,7 @@ class HistoryList extends StatelessWidget {
     var appState = context.watch<PasswordGenState>();
     var theme = Theme.of(context);
 
-    List<WordPair> history = appState.history;
+    List<PasswordSequence> history = appState.history;
 
     return Card(
       color: theme.cardColor,

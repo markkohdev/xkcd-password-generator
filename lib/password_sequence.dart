@@ -1,6 +1,6 @@
 
 import 'dart:math';
-import 'package:english_words/english_words.dart';
+// import 'package:english_words/english_words.dart';
 import 'package:english_words/src/words/unsafe.dart';
 import 'package:english_words/src/syllables.dart';
 import 'package:english_words/src/words/adjectives.dart';
@@ -10,7 +10,7 @@ import 'package:english_words/src/words/nouns_monosyllabic_safe.dart';
 
 /// The default value of the `maxSyllables` parameter of the [generatePasswordSequences]
 /// function.
-const int maxSyllablesDefault = 2;
+const int maxSyllablesDefault = 8;
 
 /// The default value of the `safeOnly` parameter of the [generatePasswordSequences]
 /// function.
@@ -69,21 +69,33 @@ Iterable<PasswordSequence> generatePasswordSequence(
   // ignore: literal_only_boolean_expressions
   while (true) {
     String prefix;
-
-    if (rand.nextBool()) {
-      prefix = pickRandom(shortAdjectives);
-    } else {
-      prefix = pickRandom(shortNouns);
+    var sequence = <String>[];
+    for (var i = 0; i < sequenceLength - 1; i++) {
+      if (rand.nextBool()) {
+        prefix = pickRandom(shortAdjectives);
+      } else {
+        prefix = pickRandom(shortNouns);
+      }
+      sequence.add(prefix);
     }
+    // if (rand.nextBool()) {
+    //   prefix = pickRandom(shortAdjectives);
+    // } else {
+    //   prefix = pickRandom(shortNouns);
+    // }
+    // Always end in a noun for memorability
     final suffix = pickRandom(shortNouns);
+    sequence.add(suffix);
 
-    // Skip combinations that clash same letters.
-    if (prefix.codeUnits.last == suffix.codeUnits.first) continue;
+    for (var i = 0; i < sequence.length - 1; i++) {
+      // Skip combinations that clash same letters.
+      if (sequence[i].codeUnits.last == sequence[i + 1].codeUnits.first) continue;
 
-    // Skip combinations that create an unsafe combinations.
-    if (safeOnly && unsafePairs.contains("$prefix$suffix")) continue;
+      // Skip combinations that create an unsafe combinations.
+      if (safeOnly && unsafePairs.contains("${sequence[i]}${sequence[i + 1]}")) continue;
+    }
 
-    final passwordSequence = PasswordSequence([prefix, suffix]);
+    final passwordSequence = PasswordSequence(sequence);
     // Skip words that don't make a nicely pronounced 2-syllable word
     // when combined together.
     if (syllables(passwordSequence.words.join()) > maxSyllables) continue;
@@ -144,6 +156,8 @@ class PasswordSequence {
   /// or `"bigFrance"`.
   late final String asString = words.join();
 
+  late final String asSemanticLabel = _createSemanticLabel();
+
   /// Returns the word pair as a simple string, in upper case,
   /// like `"KEYFRAME"` or `"FRANCELAND"`.
   late final String asUpperCase = asString.toUpperCase();
@@ -184,4 +198,8 @@ class PasswordSequence {
   String _createPascalCase() =>  words.map(_capitalize).join();
 
   String _createSnakeCase() => words.map((w) => w.toLowerCase()).join('_');
+  
+  String _createSemanticLabel() => words.map((w) => w.toLowerCase()).join(' ');
+
+  
 }
