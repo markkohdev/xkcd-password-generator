@@ -112,12 +112,10 @@ class ListTitleCard extends StatelessWidget {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     var headerStyle = theme.textTheme.displaySmall!.copyWith(
-        // color: Theme.of(context).colorScheme.onTertiary,
         fontWeight: FontWeight.bold);
 
     return FittedBox(
       child: Card(
-        // color: theme.colorScheme.tertiary,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(

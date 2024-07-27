@@ -23,7 +23,6 @@ class CandidatePasswordCard extends StatelessWidget {
         theme.textTheme.displaySmall!.copyWith(fontFamily: xkcdFont);
 
     return Card(
-      // color: theme.colorScheme.primary,
       elevation: 5,
       child: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -50,7 +49,6 @@ class CandidatePasswordCard extends StatelessWidget {
             ),
             IconButton(
               icon: Icon(Icons.copy, 
-              // color: theme.colorScheme.onPrimary
               ),
               onPressed: () {
                 appState.addToFavorites();

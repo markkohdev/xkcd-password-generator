@@ -95,7 +95,6 @@ class AboutDropdown extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 9,
-                        // color: theme.colorScheme.onPrimaryFixedVariant
                       ),
                     ),
                   ),
