@@ -7,6 +7,7 @@ import 'package:xkcd_password_generator/logging.dart';
 import 'package:xkcd_password_generator/main_screen.dart';
 import 'package:xkcd_password_generator/state_managers.dart';
 import 'package:window_size/window_size.dart';
+import 'package:xkcd_password_generator/theme.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,10 +29,7 @@ class XKCDPasswordGeneratorApp extends StatelessWidget {
       create: (context) => PasswordGenState(),
       child: MaterialApp(
         title: 'XKCD Password Generator',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
-          useMaterial3: true,
-        ),
+        theme: appTheme,
         home: MainScreen(),
       ),
     );

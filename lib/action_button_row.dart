@@ -12,14 +12,39 @@ class ActionButtonRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Wrap(spacing: 20, alignment: WrapAlignment.center, children: [
-ElevatedButton(
-  onPressed: () {
-    showDialog(
+      ElevatedButton(
+        onPressed: () {
+          appState.toggleSettings();
+        },
+        child: Text('⚙️'),
+      ),
+      ElevatedButton(
+        onPressed: () {
+          showClearDialog(context);
+        },
+        child: Text('♻️'),
+      ),
+      ElevatedButton(
+          onPressed: () {
+            appState.getNext();
+          },
+          child: Text('Next')),
+      ElevatedButton(
+          onPressed: () {
+            appState.addToFavorites();
+          },
+          child: Text('❤️')),
+    ]);
+  }
+
+  Future<dynamic> showClearDialog(BuildContext context) {
+    return showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text('Confirm'),
-          content: Text('Do you want to clear the history, favorites, or both?'),
+          content:
+              Text('Do you want to clear the history, favorites, or both?'),
           actions: <Widget>[
             TextButton(
               child: Text('History'),
@@ -33,7 +58,8 @@ ElevatedButton(
               child: Text('Favorites'),
               onPressed: () {
                 // Assuming PasswordGenState is accessible as appState
-                appState.clearFavorites(); // Implement this method in PasswordGenState
+                appState
+                    .clearFavorites(); // Implement this method in PasswordGenState
                 Navigator.of(context).pop();
               },
             ),
@@ -42,7 +68,8 @@ ElevatedButton(
               onPressed: () {
                 // Assuming PasswordGenState is accessible as appState
                 appState.clearHistory();
-                appState.clearFavorites(); // Implement this method in PasswordGenState
+                appState
+                    .clearFavorites(); // Implement this method in PasswordGenState
                 Navigator.of(context).pop();
               },
             ),
@@ -56,19 +83,5 @@ ElevatedButton(
         );
       },
     );
-  },
-  child: Text('♻️'),
-),
-      ElevatedButton(
-          onPressed: () {
-            appState.getNext();
-          },
-          child: Text('Next')),
-      ElevatedButton(
-          onPressed: () {
-            appState.addToFavorites();
-          },
-          child: Text('❤️')),
-    ]);
   }
 }

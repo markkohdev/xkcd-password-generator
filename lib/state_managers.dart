@@ -7,6 +7,7 @@ class PasswordGenState extends ChangeNotifier {
   var favorites = <PasswordSequence>[];
   var sequenceLength = 4;
   late var current = PasswordSequence.random(sequenceLength);
+  var showSettings = false;
 
   /// Get the next word pair and add the current word pair to the history
   void getNext() {
@@ -14,6 +15,11 @@ class PasswordGenState extends ChangeNotifier {
     history.add(current);
     current = PasswordSequence.random(sequenceLength);
 
+    notifyListeners();
+  }
+
+  void toggleSettings() {
+    showSettings = !showSettings;
     notifyListeners();
   }
 
