@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:xkcd_password_generator/theme.dart';
 
 class AppHeader extends StatelessWidget {
   const AppHeader({
@@ -10,12 +11,12 @@ class AppHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     var appTitleStyle = theme.textTheme.displayLarge!
-        .copyWith(color: theme.colorScheme.primary, fontFamily: 'XKCDScript');
+        .copyWith(fontFamily: xkcdFont, color: theme.colorScheme.surface);
     // Ensure the subtitle has a minimum font size
     var appSubtitleStyle = theme.textTheme.displaySmall!.copyWith(
-        color: theme.colorScheme.primary,
-        fontFamily: 'XKCDScript',
-        fontSize: 12);
+        fontFamily: xkcdFont,
+        fontSize: 12,
+        color: theme.colorScheme.surface);
 
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
@@ -40,7 +41,7 @@ class AppHeader extends StatelessWidget {
               'Passwords that are easy to remember, but hard to guess!',
               textAlign: TextAlign.center,
               style: appSubtitleStyle,
-              
+
               // softWrap: true, // Enable text wrapping
               maxLines: 2, // Optional: limit the number of lines
             ),
@@ -62,15 +63,14 @@ class AboutDropdown extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context).copyWith(dividerColor: Colors.transparent);
-    var aboutStyle =
-        theme.textTheme.bodyMedium!.copyWith(color: theme.colorScheme.primary);
+    var aboutStyle = theme.textTheme.bodyMedium!.copyWith();
 
     return Theme(
       data: theme,
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(30),
-          color: theme.colorScheme.secondary.withOpacity(0.2),
+          color: theme.colorScheme.surface,
         ),
         child: ExpansionTile(
           title: Text('About', style: TextStyle(fontWeight: FontWeight.bold)),
@@ -94,8 +94,8 @@ class AboutDropdown extends StatelessWidget {
                       "All rights for the above comic reserved to Randall Munroe.",
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: 9,
-                          color: theme.colorScheme.onPrimaryFixedVariant),
+                        fontSize: 9,
+                      ),
                     ),
                   ),
                 ],

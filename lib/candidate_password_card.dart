@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:xkcd_password_generator/password_sequence.dart';
 import 'package:xkcd_password_generator/state_managers.dart';
+import 'package:xkcd_password_generator/theme.dart';
 
 class CandidatePasswordCard extends StatelessWidget {
   CandidatePasswordCard({
@@ -16,13 +17,12 @@ class CandidatePasswordCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     var appState = context.watch<PasswordGenState>();
-    final textStyle = theme.textTheme.displayMedium!.copyWith(
-        color: theme.colorScheme.onPrimary, fontWeight: FontWeight.bold);
-    final breakdownStyle = theme.textTheme.displaySmall!
-        .copyWith(color: theme.colorScheme.onPrimary, fontFamily: 'XKCDScript');
+    final textStyle =
+        theme.textTheme.displayMedium!.copyWith(fontWeight: FontWeight.bold);
+    final breakdownStyle =
+        theme.textTheme.displaySmall!.copyWith(fontFamily: xkcdFont);
 
     return Card(
-      color: theme.colorScheme.tertiary,
       elevation: 5,
       child: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -30,7 +30,7 @@ class CandidatePasswordCard extends StatelessWidget {
           mainAxisSize: MainAxisSize.min, // Ensure the Row takes minimum space
           children: [
             Flexible(
-              // Make the text widget flexible
+              // Make the text widgxet flexible
               child: FittedBox(
                 fit: BoxFit.scaleDown, // Ensure the text scales down to fit
                 child: Column(children: [
@@ -48,7 +48,8 @@ class CandidatePasswordCard extends StatelessWidget {
               ),
             ),
             IconButton(
-              icon: Icon(Icons.copy, color: theme.colorScheme.onPrimary),
+              icon: Icon(Icons.copy, 
+              ),
               onPressed: () {
                 appState.addToFavorites();
                 Clipboard.setData(
