@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "xkcd-password-generator",
+            "name": "xkcd-password-generator (selected device)",
             "request": "launch",
             "type": "dart"
         },
@@ -27,13 +27,6 @@
             "type": "dart",
             "program": "lib/main.dart",
             "deviceId": "macos"
-        },
-        {
-            "name": "Flutter Android",
-            "request": "launch",
-            "type": "dart",
-            "program": "lib/main.dart",
-            "deviceId": "android"
         },
         {
             "name": "Flutter Chrome",

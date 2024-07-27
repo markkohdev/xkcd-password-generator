@@ -6,3 +6,12 @@ An app for generating passwords based on the [xkcd comic "Password Strength"](ht
 **TL;DR:** The comic suggests that a password made up of four random words is more secure than a password made up of a random string of characters.  This app allows you to randomly generate passwords based on that strategy along with a bit of extra flexibility.  
 
 The app is built in Flutter and Dart and is intended to work on iOS, Android, Mac, Windows, and Web.  It is currently in development and is not yet ready for release.
+
+## Development
+
+1. Run
+```
+git clone git@github.com:markkohdev/xkcd-password-generator.git
+git submodule init
+git submodule update
+```
